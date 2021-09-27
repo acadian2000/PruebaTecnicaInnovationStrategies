@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InnovationStrategiesDGTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Conductor">
+    <Key>
+      <PropertyRef Name="DNI" />
+    </Key>
+    <Property Name="IdConductor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DNI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Puntos" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Infraccione">
+    <Key>
+      <PropertyRef Name="Identificador" />
+    </Key>
+    <Property Name="IdElector" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Identificador" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PuntosaDescontar" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Vehiculo">
+    <Key>
+      <PropertyRef Name="Matricula" />
+    </Key>
+    <Property Name="IdEVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DNIConductorHabitual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RegistroInfraccionesVehiculare">
+    <Key>
+      <PropertyRef Name="IdRegistroInfraccionesVehiculares" />
+    </Key>
+    <Property Name="IdRegistroInfraccionesVehiculares" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Conductor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Vehiculo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdentificadorInfraccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PuntosConductorAntesInfraccion" Type="Int32" />
+    <Property Name="PuntosaDescontar" Type="Int32" />
+    <Property Name="PuntosConductorDespuesInfraccion" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="InnovationStrategiesDGTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Conductors" EntityType="Self.Conductor" />
+    <EntitySet Name="Infracciones" EntityType="Self.Infraccione" />
+    <EntitySet Name="Vehiculoes" EntityType="Self.Vehiculo" />
+    <EntitySet Name="RegistroInfraccionesVehiculares" EntityType="Self.RegistroInfraccionesVehiculare" />
+    <FunctionImport Name="procConductorInsert" ReturnType="Collection(String)">
+      <Parameter Name="DNI" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Puntos" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procConductorSelectTOP" ReturnType="Collection(InnovationStrategiesDGTModel.procConductorSelectTOP_Result)">
+      <Parameter Name="NumeroRegistros" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procConductorSelectxDNI" ReturnType="Collection(InnovationStrategiesDGTModel.procConductorSelectxDNI_Result)">
+      <Parameter Name="DNI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procConductorUpdate" ReturnType="Collection(String)">
+      <Parameter Name="DNI" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Puntos" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procConductorUpdatePtosDescontados">
+      <Parameter Name="DNI" Mode="In" Type="String" />
+      <Parameter Name="Puntos" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procHistorialInfraccionesConductor" ReturnType="Collection(InnovationStrategiesDGTModel.procHistorialInfraccionesConductor_Result)">
+      <Parameter Name="DNIConductorHabitual" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procInfraccionesInsert" ReturnType="Collection(String)">
+      <Parameter Name="Identificador" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="PuntosaDesconta" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procInfraccionesSelect" ReturnType="Collection(InnovationStrategiesDGTModel.procInfraccionesSelect_Result)" />
+    <FunctionImport Name="procInfraccionesSelectxFiltrado" ReturnType="Collection(InnovationStrategiesDGTModel.procInfraccionesSelectxFiltrado_Result)">
+      <Parameter Name="Identificador" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="PuntosaDesconta" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procInfraccionesUpdate" ReturnType="Collection(String)">
+      <Parameter Name="Identificador" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="PuntosaDesconta" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procInfraccionesVehicularesInsert" ReturnType="Collection(String)">
+      <Parameter Name="Hora" Mode="In" Type="String" />
+      <Parameter Name="Fecha" Mode="In" Type="String" />
+      <Parameter Name="Conductor" Mode="In" Type="String" />
+      <Parameter Name="Vehiculo" Mode="In" Type="String" />
+      <Parameter Name="IdentificadorInfraccion" Mode="In" Type="String" />
+      <Parameter Name="PuntosConductorAntesInfraccion" Mode="In" Type="Int32" />
+      <Parameter Name="PuntosaDescontar" Mode="In" Type="Int32" />
+      <Parameter Name="PuntosConductorDespuesInfraccion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procInfraccionesVehicularesUpdate" ReturnType="Collection(String)">
+      <Parameter Name="Hora" Mode="In" Type="String" />
+      <Parameter Name="Fecha" Mode="In" Type="String" />
+      <Parameter Name="Conductor" Mode="In" Type="String" />
+      <Parameter Name="Vehiculo" Mode="In" Type="String" />
+      <Parameter Name="IdentificadorInfraccion" Mode="In" Type="String" />
+      <Parameter Name="PuntosConductorAntesInfraccion" Mode="In" Type="Int32" />
+      <Parameter Name="PuntosaDescontar" Mode="In" Type="Int32" />
+      <Parameter Name="PuntosConductorDespuesInfraccion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procTOPInfraccionesHabituales" ReturnType="Collection(InnovationStrategiesDGTModel.procTOPInfraccionesHabituales_Result)">
+      <Parameter Name="TOPInfraccionesHabitualesl" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procVehiculoInsert" ReturnType="Collection(String)">
+      <Parameter Name="Matricula" Mode="In" Type="String" />
+      <Parameter Name="Marca" Mode="In" Type="String" />
+      <Parameter Name="Modelo" Mode="In" Type="String" />
+      <Parameter Name="DNIConductorHabitual" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procVehiculoSelect" ReturnType="Collection(InnovationStrategiesDGTModel.procVehiculoSelect_Result)" />
+    <FunctionImport Name="procVehiculoSelectFiltrado" ReturnType="Collection(InnovationStrategiesDGTModel.procVehiculoSelectFiltrado_Result)">
+      <Parameter Name="Matricula" Mode="In" Type="String" />
+      <Parameter Name="Marca" Mode="In" Type="String" />
+      <Parameter Name="Modelo" Mode="In" Type="String" />
+      <Parameter Name="DNIConductorHabitual" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procVehiculoUpdate" ReturnType="Collection(String)">
+      <Parameter Name="Matricula" Mode="In" Type="String" />
+      <Parameter Name="Marca" Mode="In" Type="String" />
+      <Parameter Name="Modelo" Mode="In" Type="String" />
+      <Parameter Name="DNIConductorHabitual" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="procConductorSelectTOP_Result">
+    <Property Type="String" Name="DNI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Puntos" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="procConductorSelectxDNI_Result">
+    <Property Type="String" Name="DNI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Puntos" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="procHistorialInfraccionesConductor_Result">
+    <Property Type="String" Name="DNI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Hora" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Vehiculo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Marca" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Modelo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Codigo_de_infraccion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Puntos_Conductor_Antes_de_laInfraccion" Nullable="true" />
+    <Property Type="Int32" Name="Puntos_a_Descontar" Nullable="true" />
+    <Property Type="Int32" Name="Puntos_Conductor_Despues_de_la_Infraccion" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="procInfraccionesSelect_Result">
+    <Property Type="Int32" Name="IdElector" Nullable="false" />
+    <Property Type="String" Name="Identificador" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="PuntosaDescontar" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="procInfraccionesSelectxFiltrado_Result">
+    <Property Type="Int32" Name="IdElector" Nullable="false" />
+    <Property Type="String" Name="Identificador" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="PuntosaDescontar" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="procTOPInfraccionesHabituales_Result">
+    <Property Type="String" Name="IdentificadorInfraccion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalInfracciones" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="procVehiculoSelect_Result">
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Marca" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Modelo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DNIConductorHabitual" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="procVehiculoSelectFiltrado_Result">
+    <Property Type="String" Name="Matricula" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Marca" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Modelo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DNIConductorHabitual" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InnovationStrategiesDGTModelStoreContainer" CdmEntityContainer="InnovationStrategiesDGTEntities">
+    <EntitySetMapping Name="Conductors">
+      <EntityTypeMapping TypeName="InnovationStrategiesDGTModel.Conductor">
+        <MappingFragment StoreEntitySet="Conductor">
+          <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Infracciones">
+      <EntityTypeMapping TypeName="InnovationStrategiesDGTModel.Infraccione">
+        <MappingFragment StoreEntitySet="Infracciones">
+          <ScalarProperty Name="IdElector" ColumnName="IdElector" />
+          <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="PuntosaDescontar" ColumnName="PuntosaDescontar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehiculoes">
+      <EntityTypeMapping TypeName="InnovationStrategiesDGTModel.Vehiculo">
+        <MappingFragment StoreEntitySet="Vehiculo">
+          <ScalarProperty Name="IdEVehiculo" ColumnName="IdEVehiculo" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="DNIConductorHabitual" ColumnName="DNIConductorHabitual" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroInfraccionesVehiculares">
+      <EntityTypeMapping TypeName="InnovationStrategiesDGTModel.RegistroInfraccionesVehiculare">
+        <MappingFragment StoreEntitySet="RegistroInfraccionesVehiculares">
+          <ScalarProperty Name="IdRegistroInfraccionesVehiculares" ColumnName="IdRegistroInfraccionesVehiculares" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Conductor" ColumnName="Conductor" />
+          <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+          <ScalarProperty Name="IdentificadorInfraccion" ColumnName="IdentificadorInfraccion" />
+          <ScalarProperty Name="PuntosConductorAntesInfraccion" ColumnName="PuntosConductorAntesInfraccion" />
+          <ScalarProperty Name="PuntosaDescontar" ColumnName="PuntosaDescontar" />
+          <ScalarProperty Name="PuntosConductorDespuesInfraccion" ColumnName="PuntosConductorDespuesInfraccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="procConductorSelectTOP" FunctionName="InnovationStrategiesDGTModel.Store.procConductorSelectTOP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InnovationStrategiesDGTModel.procConductorSelectTOP_Result">
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procConductorSelectxDNI" FunctionName="InnovationStrategiesDGTModel.Store.procConductorSelectxDNI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InnovationStrategiesDGTModel.procConductorSelectxDNI_Result">
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procConductorUpdatePtosDescontados" FunctionName="InnovationStrategiesDGTModel.Store.procConductorUpdatePtosDescontados" />
+    <FunctionImportMapping FunctionImportName="procInfraccionesSelect" FunctionName="InnovationStrategiesDGTModel.Store.procInfraccionesSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InnovationStrategiesDGTModel.procInfraccionesSelect_Result">
+          <ScalarProperty Name="IdElector" ColumnName="IdElector" />
+          <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="PuntosaDescontar" ColumnName="PuntosaDescontar" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procInfraccionesSelectxFiltrado" FunctionName="InnovationStrategiesDGTModel.Store.procInfraccionesSelectxFiltrado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InnovationStrategiesDGTModel.procInfraccionesSelectxFiltrado_Result">
+          <ScalarProperty Name="IdElector" ColumnName="IdElector" />
+          <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="PuntosaDescontar" ColumnName="PuntosaDescontar" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procTOPInfraccionesHabituales" FunctionName="InnovationStrategiesDGTModel.Store.procTOPInfraccionesHabituales">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InnovationStrategiesDGTModel.procTOPInfraccionesHabituales_Result">
+          <ScalarProperty Name="IdentificadorInfraccion" ColumnName="IdentificadorInfraccion" />
+          <ScalarProperty Name="TotalInfracciones" ColumnName="TotalInfracciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procVehiculoSelect" FunctionName="InnovationStrategiesDGTModel.Store.procVehiculoSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InnovationStrategiesDGTModel.procVehiculoSelect_Result">
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="DNIConductorHabitual" ColumnName="DNIConductorHabitual" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procVehiculoSelectFiltrado" FunctionName="InnovationStrategiesDGTModel.Store.procVehiculoSelectFiltrado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InnovationStrategiesDGTModel.procVehiculoSelectFiltrado_Result">
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="DNIConductorHabitual" ColumnName="DNIConductorHabitual" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procVehiculoInsert" FunctionName="InnovationStrategiesDGTModel.Store.procVehiculoInsert" />
+    <FunctionImportMapping FunctionImportName="procVehiculoUpdate" FunctionName="InnovationStrategiesDGTModel.Store.procVehiculoUpdate" />
+    <FunctionImportMapping FunctionImportName="procInfraccionesInsert" FunctionName="InnovationStrategiesDGTModel.Store.procInfraccionesInsert" />
+    <FunctionImportMapping FunctionImportName="procInfraccionesUpdate" FunctionName="InnovationStrategiesDGTModel.Store.procInfraccionesUpdate" />
+    <FunctionImportMapping FunctionImportName="procInfraccionesVehicularesInsert" FunctionName="InnovationStrategiesDGTModel.Store.procInfraccionesVehicularesInsert" />
+    <FunctionImportMapping FunctionImportName="procInfraccionesVehicularesUpdate" FunctionName="InnovationStrategiesDGTModel.Store.procInfraccionesVehicularesUpdate" />
+    <FunctionImportMapping FunctionImportName="procHistorialInfraccionesConductor" FunctionName="InnovationStrategiesDGTModel.Store.procHistorialInfraccionesConductor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InnovationStrategiesDGTModel.procHistorialInfraccionesConductor_Result1">
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Vehiculo" ColumnName="Vehiculo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Codigo_de_infraccion" ColumnName="Codigo de infraccion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Puntos_Conductor_Antes_de_laInfraccion" ColumnName="Puntos Conductor Antes de laInfraccion" />
+          <ScalarProperty Name="Puntos_a_Descontar" ColumnName="Puntos a Descontar" />
+          <ScalarProperty Name="Puntos_Conductor_Despues_de_la_Infraccion" ColumnName="Puntos Conductor Despues de la Infraccion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procConductorInsert" FunctionName="InnovationStrategiesDGTModel.Store.procConductorInsert" />
+    <FunctionImportMapping FunctionImportName="procConductorUpdate" FunctionName="InnovationStrategiesDGTModel.Store.procConductorUpdate" />
+  </EntityContainerMapping>
+</Mapping>
